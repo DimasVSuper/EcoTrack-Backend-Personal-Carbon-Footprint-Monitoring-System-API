@@ -1,0 +1,14 @@
+<?php
+
+namespace DummyNamespace;
+
+class DummyClass
+{
+    /**
+     * Execute the service.
+     */
+    public function handle(): void
+    {
+        //
+    }
+}
