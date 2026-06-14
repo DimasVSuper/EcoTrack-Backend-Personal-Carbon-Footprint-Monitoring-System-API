@@ -7,6 +7,13 @@ use App\Models\TransportType;
 
 class TransportService
 {
+    private $emissionCalculator;
+
+    public function __construct(EmissionCalculatorService $emissionCalculator)
+    {
+        $this->emissionCalculator = $emissionCalculator;
+    }
+
     public function getUserLogs(int $userId)
     {
         return TransportLog::with('transportType')
@@ -17,14 +24,13 @@ class TransportService
 
     public function createLog(int $userId, array $data): TransportLog
     {
-        $transportType = TransportType::findOrFail($data['transport_type_id']);
-        $calculatedEmission = $data['distance'] * $transportType->emission_factor;
+        $emissionKg = $this->emissionCalculator->calculateTransportEmission($data['distance_km'], $data['transport_type_id']);
 
         return TransportLog::create([
             'user_id' => $userId,
             'transport_type_id' => $data['transport_type_id'],
-            'distance' => $data['distance'],
-            'calculated_emission' => $calculatedEmission,
+            'distance_km' => $data['distance_km'],
+            'emission_kg' => $emissionKg,
             'activity_date' => $data['activity_date'],
         ]);
     }

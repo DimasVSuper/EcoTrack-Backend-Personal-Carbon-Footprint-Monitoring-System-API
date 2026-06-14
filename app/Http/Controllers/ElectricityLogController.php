@@ -34,11 +34,10 @@ class ElectricityLogController extends Controller
      */
     public function store(Request $request): JsonResponse
     {
-        // Validasi input dari Flutter
         $validated = $request->validate([
-            'kwh' => 'required|numeric|min:1',
-            'period' => 'required|string|max:50', // Contoh: "Juni 2026"
-            'logging_date' => 'required|date',
+            'usage_kwh' => 'required|numeric|min:1',
+            'period_month' => 'required|string|max:7', // Format: "YYYY-MM"
+            'record_date' => 'required|date',
         ]);
 
         // Kirim data ke service

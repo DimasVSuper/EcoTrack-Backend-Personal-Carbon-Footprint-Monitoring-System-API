@@ -37,7 +37,7 @@ class TransportLogController extends Controller
         // Validasi input dari aplikasi Flutter
         $validated = $request->validate([
             'transport_type_id' => 'required|exists:transport_types,id',
-            'distance' => 'required|numeric|min:0.1',
+            'distance_km' => 'required|numeric|min:0.1',
             'activity_date' => 'required|date',
         ]);
 

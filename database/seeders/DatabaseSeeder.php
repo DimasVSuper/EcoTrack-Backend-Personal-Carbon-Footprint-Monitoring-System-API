@@ -19,5 +19,13 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        \App\Models\TransportType::insert([
+            ['name' => 'Mobil Bensin', 'emission_factor_per_km' => 0.192],
+            ['name' => 'Mobil Listrik', 'emission_factor_per_km' => 0.053],
+            ['name' => 'Motor', 'emission_factor_per_km' => 0.103],
+            ['name' => 'Bus Umum', 'emission_factor_per_km' => 0.105],
+            ['name' => 'Kereta Listrik (KRL)', 'emission_factor_per_km' => 0.041],
+        ]);
     }
 }

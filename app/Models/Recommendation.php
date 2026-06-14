@@ -1,0 +1,19 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Recommendation extends Model
+{
+    protected $fillable = [
+        'title',
+        'description',
+        'category',
+    ];
+
+    public function userRecommendations()
+    {
+        return $this->hasMany(UserRecommendation::class);
+    }
+}
