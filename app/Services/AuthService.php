@@ -21,7 +21,7 @@ class AuthService
         return [
             'user' => $user,
             'access_token' => $token,
-            'token_type' => 'Bearer'
+            'token_type' => 'Bearer',
         ];
     }
 
@@ -35,7 +35,6 @@ class AuthService
             ]);
         }
 
-        // Hapus token lama agar single-session (opsional)
         $user->tokens()->delete();
 
         $token = $user->createToken('auth_token')->plainTextToken;
@@ -43,7 +42,7 @@ class AuthService
         return [
             'user' => $user,
             'access_token' => $token,
-            'token_type' => 'Bearer'
+            'token_type' => 'Bearer',
         ];
     }
 
