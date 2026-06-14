@@ -233,7 +233,7 @@
       "method": "POST",
       "body": {
         "mimeType": "application/json",
-        "text": "{\n\t\"transport_type_id\": 1,\n\t\"distance\": 15.5,\n\t\"activity_date\": \"2026-06-14\"\n}"
+        "text": "{\n\t\"transport_type_id\": 1,\n\t\"distance_km\": 15.5,\n\t\"activity_date\": \"2026-06-14\"\n}"
       },
       "parameters": [],
       "headers": [
@@ -314,7 +314,7 @@
       "method": "POST",
       "body": {
         "mimeType": "application/json",
-        "text": "{\n\t\"kwh\": 150.5,\n\t\"period\": \"2026-06\",\n\t\"logging_date\": \"2026-06-14\"\n}"
+        "text": "{\n\t\"usage_kwh\": 150.5,\n\t\"period_month\": \"2026-06\",\n\t\"record_date\": \"2026-06-14\"\n}"
       },
       "parameters": [],
       "headers": [
