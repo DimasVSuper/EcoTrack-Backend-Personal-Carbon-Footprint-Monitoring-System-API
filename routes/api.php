@@ -18,6 +18,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 
     // Modul Transportasi
+    Route::get('/transport-types', function() {
+        return response()->json(['data' => \App\Models\TransportType::all()]);
+    });
     Route::get('/transport-logs', [TransportLogController::class, 'index']);
     Route::post('/transport-logs', [TransportLogController::class, 'store']);
 
