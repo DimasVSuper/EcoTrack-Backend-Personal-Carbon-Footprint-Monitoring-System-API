@@ -1,15 +1,15 @@
 {
   "_type": "export",
   "__export_format": 4,
-  "__export_date": "2024-06-14T00:00:00.000Z",
-  "__export_source": "insomnia.desktop.app:v8.0.0",
+  "__export_date": "2026-06-14T00:00:00.000Z",
+  "__export_source": "insomnia.desktop.app:v9.0.0",
   "resources": [
     {
       "_id": "wrk_ecotrack",
       "parentId": null,
       "modified": 1718341600000,
       "created": 1718341600000,
-      "name": "EcoTrack API",
+      "name": "EcoTrack-API",
       "description": "Koleksi API untuk backend EcoTrack",
       "scope": "collection",
       "_type": "workspace"
@@ -233,7 +233,7 @@
       "method": "POST",
       "body": {
         "mimeType": "application/json",
-        "text": "{\n\t\"vehicle_type\": \"car\",\n\t\"distance_km\": 15.5,\n\t\"fuel_type\": \"gasoline\"\n}"
+        "text": "{\n\t\"transport_type_id\": 1,\n\t\"distance\": 15.5,\n\t\"activity_date\": \"2026-06-14\"\n}"
       },
       "parameters": [],
       "headers": [
@@ -314,7 +314,7 @@
       "method": "POST",
       "body": {
         "mimeType": "application/json",
-        "text": "{\n\t\"usage_kwh\": 150.5,\n\t\"month\": \"2024-06\"\n}"
+        "text": "{\n\t\"kwh\": 150.5,\n\t\"period\": \"2026-06\",\n\t\"logging_date\": \"2026-06-14\"\n}"
       },
       "parameters": [],
       "headers": [
