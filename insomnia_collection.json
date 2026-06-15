@@ -261,6 +261,75 @@
       "_type": "request"
     },
     {
+      "_id": "req_put_transport",
+      "parentId": "fld_transport",
+      "modified": 1718341600000,
+      "created": 1718341600000,
+      "url": "{{ _.base_url }}/transport-logs/1",
+      "name": "Update Transport Log",
+      "description": "Update transport log by id",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"transport_type_id\": 2,\n\t\"distance_km\": 8.5,\n\t\"activity_date\": \"2026-06-15\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Accept",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1718341490000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_delete_transport",
+      "parentId": "fld_transport",
+      "modified": 1718341600000,
+      "created": 1718341600000,
+      "url": "{{ _.base_url }}/transport-logs/1",
+      "name": "Delete Transport Log",
+      "description": "Delete transport log by id",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Accept",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1718341480000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
       "_id": "fld_electricity",
       "parentId": "wrk_ecotrack",
       "modified": 1718341600000,
@@ -332,6 +401,75 @@
         "token": "{{ _.token }}"
       },
       "metaSortKey": -1718341500000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_put_electricity",
+      "parentId": "fld_electricity",
+      "modified": 1718341600000,
+      "created": 1718341600000,
+      "url": "{{ _.base_url }}/electricity-logs/1",
+      "name": "Update Electricity Log",
+      "description": "Update electricity log by id",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"usage_kwh\": 180.5,\n\t\"period_month\": \"2026-07\",\n\t\"record_date\": \"2026-06-16\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Accept",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1718341490000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_delete_electricity",
+      "parentId": "fld_electricity",
+      "modified": 1718341600000,
+      "created": 1718341600000,
+      "url": "{{ _.base_url }}/electricity-logs/1",
+      "name": "Delete Electricity Log",
+      "description": "Delete electricity log by id",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Accept",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1718341480000,
       "isPrivate": false,
       "settingStoreCookies": true,
       "settingSendCookies": true,
