@@ -38,8 +38,14 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/transport-logs', [TransportLogController::class, 'index']);
     Route::post('/transport-logs', [TransportLogController::class, 'store']);
+    Route::put('/transport-logs/{id}', [TransportLogController::class, 'update']);
+    Route::patch('/transport-logs/{id}', [TransportLogController::class, 'update']);
+    Route::delete('/transport-logs/{id}', [TransportLogController::class, 'destroy']);
 
     // Modul Listrik
     Route::get('/electricity-logs', [ElectricityLogController::class, 'index']);
     Route::post('/electricity-logs', [ElectricityLogController::class, 'store']);
+    Route::put('/electricity-logs/{id}', [ElectricityLogController::class, 'update']);
+    Route::patch('/electricity-logs/{id}', [ElectricityLogController::class, 'update']);
+    Route::delete('/electricity-logs/{id}', [ElectricityLogController::class, 'destroy']);
 });
