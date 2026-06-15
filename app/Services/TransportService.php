@@ -34,4 +34,32 @@ class TransportService
             'activity_date' => $data['activity_date'],
         ]);
     }
+
+    public function updateLog(int $userId, int $logId, array $data): TransportLog
+    {
+        $log = TransportLog::where('id', $logId)
+            ->where('user_id', $userId)
+            ->firstOrFail();
+
+        $emissionKg = $this->emissionCalculator->calculateTransportEmission(
+            $data['distance_km'] ?? $log->distance_km,
+            $data['transport_type_id'] ?? $log->transport_type_id
+        );
+
+        $log->update([
+            'transport_type_id' => $data['transport_type_id'] ?? $log->transport_type_id,
+            'distance_km' => $data['distance_km'] ?? $log->distance_km,
+            'activity_date' => $data['activity_date'] ?? $log->activity_date,
+            'emission_kg' => $emissionKg,
+        ]);
+
+        return $log->fresh();
+    }
+
+    public function deleteLog(int $userId, int $logId): bool
+    {
+        return TransportLog::where('id', $logId)
+            ->where('user_id', $userId)
+            ->delete() > 0;
+    }
 }
