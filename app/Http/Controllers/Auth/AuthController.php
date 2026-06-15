@@ -42,6 +42,12 @@ class AuthController extends Controller
 
         $result = $this->authService->login($validated);
 
+        if (! $result) {
+            return response()->json([
+                'message' => 'Kredensial yang Anda masukkan salah.',
+            ], 401);
+        }
+
         return response()->json([
             'message' => 'Login sukses! Selamat datang kembali.',
             'data' => $result
