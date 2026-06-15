@@ -41,6 +41,8 @@ Setelah token terisi, semua request yang memerlukan otorisasi otomatis menyertak
 ### 📁 Transport
 1. **GET `/transport-types`** – Menampilkan daftar jenis kendaraan (id & nama).
 2. **POST `/transport-logs`** – Menambahkan log aktivitas transportasi.
+3. **PUT/PATCH `/transport-logs/{id}`** – Mengubah log transportasi yang sudah ada.
+4. **DELETE `/transport-logs/{id}`** – Menghapus log transportasi.
    - *Body* (JSON):
      ```json
      {
@@ -54,6 +56,8 @@ Setelah token terisi, semua request yang memerlukan otorisasi otomatis menyertak
 
 ### 📁 Electricity
 1. **POST `/electricity-logs`** – Menambahkan log pemakaian listrik.
+2. **PUT/PATCH `/electricity-logs/{id}`** – Mengubah log listrik yang sudah ada.
+3. **DELETE `/electricity-logs/{id}`** – Menghapus log listrik.
    - *Body* (JSON):
      ```json
      {
