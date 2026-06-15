@@ -12,6 +12,7 @@ Repository ini merupakan *source code* bagian **Backend API** yang dibangun meng
 - **Pencatatan Aktivitas & Kalkulasi Otomatis:**
   - **Modul Transportasi:** Menghitung emisi berdasarkan jarak tempuh (km) dan faktor emisi spesifik jenis kendaraan.
   - **Modul Listrik:** Menghitung emisi berdasarkan penggunaan daya listrik (kWh) per periode.
+- **CRUD Riwayat:** Mendukung create, read, update, dan delete untuk log transportasi serta log listrik.
 - **Arsitektur Service Layer:** Perhitungan emisi dipisahkan ke dalam `EmissionCalculatorService` untuk akurasi dan kemudahan pemeliharaan.
 - **Output JSON Konsisten:** Semua respon API disajikan dalam format JSON standar untuk konsumsi aplikasi frontend.
 
@@ -141,7 +142,7 @@ Content-Type: application/json
 ```json
 {
   "transport_type_id": 1,
-  "distance": 12.5,
+  "distance_km": 12.5,
   "activity_date": "2026-06-11"
 }
 ```
@@ -159,9 +160,9 @@ Content-Type: application/json
 
 ```json
 {
-  "kwh": 150.00,
-  "period": "Juni 2026",
-  "logging_date": "2026-06-11"
+  "usage_kwh": 150.00,
+  "period_month": "2026-06",
+  "record_date": "2026-06-11"
 }
 ```
 
@@ -169,7 +170,23 @@ Content-Type: application/json
 - URL: `/api/electricity-logs`
 - Method: `GET`
 
-#### 8. Logout
+#### 8. Update log transportasi
+- URL: `/api/transport-logs/{id}`
+- Method: `PUT` atau `PATCH`
+
+#### 9. Hapus log transportasi
+- URL: `/api/transport-logs/{id}`
+- Method: `DELETE`
+
+#### 10. Update log listrik
+- URL: `/api/electricity-logs/{id}`
+- Method: `PUT` atau `PATCH`
+
+#### 11. Hapus log listrik
+- URL: `/api/electricity-logs/{id}`
+- Method: `DELETE`
+
+#### 12. Logout
 - URL: `/api/logout`
 - Method: `POST`
 
