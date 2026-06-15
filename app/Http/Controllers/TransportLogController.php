@@ -34,19 +34,44 @@ class TransportLogController extends Controller
      */
     public function store(Request $request): JsonResponse
     {
-        // Validasi input dari aplikasi Flutter
         $validated = $request->validate([
             'transport_type_id' => 'required|exists:transport_types,id',
             'distance_km' => 'required|numeric|min:0.1',
             'activity_date' => 'required|date',
         ]);
 
-        // Lempar data ke service beserta ID user yang sedang login
         $log = $this->transportService->createLog(auth()->id(), $validated);
 
         return response()->json([
             'message' => 'Aktivitas transportasi berhasil dicatat!',
-            'data' => $log->load('transportType') // Load relasi agar Flutter mendapat info nama kendaraannya
+            'data' => $log->load('transportType')
         ], 201);
+    }
+
+    public function update(Request $request, int $id): JsonResponse
+    {
+        $validated = $request->validate([
+            'transport_type_id' => 'sometimes|exists:transport_types,id',
+            'distance_km' => 'sometimes|numeric|min:0.1',
+            'activity_date' => 'sometimes|date',
+        ]);
+
+        $log = $this->transportService->updateLog(auth()->id(), $id, $validated);
+
+        return response()->json([
+            'message' => 'Aktivitas transportasi berhasil diperbarui!',
+            'data' => $log->load('transportType')
+        ], 200);
+    }
+
+    public function destroy(int $id): JsonResponse
+    {
+        $deleted = $this->transportService->deleteLog(auth()->id(), $id);
+
+        if (! $deleted) {
+            return response()->json(['message' => 'Log transportasi tidak ditemukan.'], 404);
+        }
+
+        return response()->json(['message' => 'Log transportasi berhasil dihapus.'], 200);
     }
 }
