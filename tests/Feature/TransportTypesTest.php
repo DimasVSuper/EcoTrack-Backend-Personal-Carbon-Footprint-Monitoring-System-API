@@ -26,4 +26,23 @@ class TransportTypesTest extends TestCase
 
         $response->assertUnauthorized();
     }
+
+    public function test_electricity_logs_still_require_authentication(): void
+    {
+        $response = $this->getJson('/api/electricity-logs');
+
+        $response->assertUnauthorized();
+    }
+
+    public function test_user_profile_still_require_authentication(): void
+    {
+        $response = $this->getJson('/api/user/profile');
+        $response->assertUnauthorized();
+    }
+
+    public function test_user_logout_still_require_authentication(): void
+    {
+        $response = $this->postJson('/api/logout');
+        $response->assertUnauthorized();
+    }
 }
