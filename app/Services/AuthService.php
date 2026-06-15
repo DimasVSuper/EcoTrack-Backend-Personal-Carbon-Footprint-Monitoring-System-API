@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\ValidationException;
 
 class AuthService
 {
@@ -25,14 +24,12 @@ class AuthService
         ];
     }
 
-    public function login(array $credentials): array
+    public function login(array $credentials): ?array
     {
         $user = User::where('email', $credentials['email'])->first();
 
         if (! $user || ! Hash::check($credentials['password'], $user->password)) {
-            throw ValidationException::withMessages([
-                'email' => ['Kredensial yang Anda masukkan salah.'],
-            ]);
+            return null;
         }
 
         $user->tokens()->delete();
