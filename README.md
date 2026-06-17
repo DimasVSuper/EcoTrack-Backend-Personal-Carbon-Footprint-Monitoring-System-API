@@ -192,7 +192,91 @@ Content-Type: application/json
 
 ---
 
-## 📝 Catatan Tambahan
+## � Deployment & Maintenance (EcoTrack)
+
+### 1. Deployment Backend Laravel
+
+#### Persyaratan Server
+- PHP 8.2+
+- Composer
+- MySQL 5.7+ / PostgreSQL 10+
+- Laravel 11.x
+- Apache atau Nginx
+- SSL untuk produksi
+
+#### Langkah Deploy
+```bash
+composer install --optimize-autoloader --no-dev
+cp .env.example .env
+php artisan key:generate
+php artisan migrate --force
+php artisan db:seed
+php artisan storage:link
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+```
+
+#### Jalankan Produksi
+- Development: `php artisan serve --host=0.0.0.0 --port=8000`
+- Production: gunakan virtual host Apache/Nginx dengan document root ke `public/`
+
+#### Checklist Produksi
+- Set `APP_ENV=production` dan `APP_DEBUG=false`
+- Gunakan SSL
+- Atur permission folder `storage/` dan `bootstrap/cache/`
+- Aktifkan logging harian untuk debugging
+
+### 2. Deployment Frontend Flutter
+
+#### Persyaratan
+- Flutter SDK terbaru
+- Android Studio / VS Code Flutter extension
+- Backend Laravel berjalan di `http://127.0.0.1:8000/api` atau domain produksi
+
+#### Langkah Deploy
+```bash
+flutter pub get
+flutter build apk --release
+flutter build appbundle --release
+```
+
+#### Konfigurasi Base URL
+- Emulator Android: `http://10.0.2.2:8000/api`
+- Emulator iOS: `http://localhost:8000/api`
+- Device fisik: `http://192.168.x.x:8000/api`
+- Produksi: `https://your-domain/api`
+
+### 3. Maintenance & Monitoring
+
+#### Monitoring
+- Cek log backend di `storage/logs/laravel.log`
+- Pantau error 4xx/5xx dari API
+- Pastikan koneksi ke database stabil
+
+#### Backup Database
+```bash
+mysqldump -u root -p ecotrack_db > backup_$(date +%Y%m%d).sql
+```
+
+#### Update Berkala
+```bash
+composer update --no-dev
+php artisan migrate --force
+php artisan config:clear
+php artisan cache:clear
+flutter pub upgrade
+flutter analyze
+```
+
+#### Keamanan
+- Rotasi token dan password secara berkala
+- Jalankan `composer audit`
+- Gunakan SSL dan file permission yang benar
+
+---
+
+## �📝 Catatan Tambahan
 
 - Pastikan dokumentasi Postman diekspor dalam format `.json` jika diperlukan untuk lampiran.
 - Struktur folder mengikuti standar Laravel dan prinsip separation of concerns via service layer.
