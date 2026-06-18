@@ -13,12 +13,17 @@ lib/
 │       └── api_client.dart       # Dio configuration with request token interceptor
 ├── providers/
 │   └── auth_provider.dart        # Authentication state (Login, Register, Logout)
-├── views/
+├── features/
+│   ├── main_view.dart             # Main Shell with Bottom Navigation
 │   ├── auth/
 │   │   ├── login_view.dart        # Responsive Login screen (Mobile / Web)
 │   │   └── register_view.dart     # Responsive Register screen (Mobile / Web)
-│   └── dashboard/
-│       └── dashboard_view.dart    # Dashboard placeholder & main activity view
+│   ├── dashboard/
+│   │   └── dashboard_view.dart    # Dashboard placeholder & main activity view
+│   ├── transport/
+│   │   └── transport_view.dart    # Unified Transport Log & Input View
+│   └── electricity/
+│       └── electricity_view.dart  # Unified Electricity Log & Input View
 ├── app.dart                       # Global MaterialApp theme & Auth router
 └── main.dart                      # App entry point (main function)
 ```
